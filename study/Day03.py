@@ -7,6 +7,8 @@ elif unit == 'cm':
 else:
     print('Wrong unit!')
 
+#
+
 score = float(input('Score: '))
 if score >= 90:
     grade = 'A'
@@ -19,6 +21,8 @@ elif score >= 60:
 else:
     grade = 'E'
 print('Grade: ',grade)
+
+#
 
 a = float(input('a = '))
 b = float(input('b = '))
