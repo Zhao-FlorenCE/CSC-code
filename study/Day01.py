@@ -1,9 +1,9 @@
 #The Zen of Python, by Tim Peters
+
 import this
 
-#
-
 #turtle
+
 import turtle
 '''
 turtle.pensize(4)

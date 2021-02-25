@@ -1,3 +1,5 @@
+#输入一个正整数判断是不是素数
+
 from math import sqrt
 
 num = int(input('Number: '))
@@ -10,7 +12,7 @@ for i in range(2,int(sqrt(num)) + 1):
 if prime == True:
     print('True. ')
 
-#
+#输入两个正整数，计算它们的最大公约数和最小公倍数
 
 num1 = int(input('Number1: '))
 num2 = int(input('Number2: '))
@@ -26,7 +28,7 @@ for i in range(maxnum, 0 ,-1):
         print('.')
         break
 
-#
+#打印三角形图案
 
 row = int(input('Row: '))
 print('')
