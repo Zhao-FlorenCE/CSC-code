@@ -61,4 +61,16 @@ def dday(year,month,day):
     return total + day
 
 #打印杨辉三角
-#unfinished
+
+def yang_hui(row):
+    yh = [[]] * row
+    for yh_row in range(len(yh)):
+        yh[yh_row] = [None] * (yh_row + 1)
+        for col in range(len(yh[yh_row])):
+            if col == 0 or col == yh_row:
+                yh[yh_row][col] = 1
+            else:
+                yh[yh_row][col] = yh[yh_row - 1][col] + \
+                yh[yh_row -1][col - 1]
+            print(yh[yh_row][col], end = '\t')
+        print()
