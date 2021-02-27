@@ -11,6 +11,9 @@ def words():
         time.sleep(0.2)
         content = content[1:] + content[0]
 
+'''
+words()
+'''
 
 #设计一个函数产生指定长度的验证码，
 #验证码由大小写字母和数字构成
@@ -26,6 +29,10 @@ def pin_code():
         code += all_chars[num]
     print('Code: ',code)
 
+'''
+pin_code()
+'''
+
 #设计一个函数返回给定文件名的后缀名
 
 def file():
@@ -36,6 +43,10 @@ def file():
     else:
         return 'Null'
 
+'''
+file()
+'''
+
 #设计一个函数返回传入的列表中最大和第二大的元素的值
 
 def list_rank(x):
@@ -43,6 +54,11 @@ def list_rank(x):
     a = x_new[0]
     b = x_new[1]
     return a, b
+
+'''
+x = list(input('Input: '))
+print(list_rank(x))
+'''
 
 #计算指定的年月日是这一年的第几天
 
@@ -60,6 +76,13 @@ def dday(year,month,day):
         total += days[num]
     return total + day
 
+'''
+y = int(input("Year: "))
+m = int(input("Month: "))
+d = int(input("Day: "))
+print(dday(y, m, d))
+'''
+
 #打印杨辉三角
 
 def yang_hui(row):
@@ -74,3 +97,8 @@ def yang_hui(row):
                 yh[yh_row -1][col - 1]
             print(yh[yh_row][col], end = '\t')
         print()
+
+'''
+row = int(input('Row: '))
+yang_hui(row)
+'''

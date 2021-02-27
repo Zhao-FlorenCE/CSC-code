@@ -9,6 +9,12 @@ def gcd(x, y):
 def lcm(x, y):
     return x * y // gcd(x, y)
 
+'''
+x = int(input('X: '))
+y = int(input('Y: '))
+print('GCD: %d, LCM: %d' % (gcd(x, y), lcm(x, y)))
+'''
+
 #实现判断一个数是不是回文数的函数
 
 def is_palindrome(num):
@@ -18,6 +24,11 @@ def is_palindrome(num):
         palindrome = palindrome * 10 + num1 % 10
         num1 //= 10
     return palindrome == num
+
+'''
+num = int(input('Num: '))
+print(is_palindrome(num))
+'''
 
 #实现判断一个数是不是素数的函数
 
@@ -31,6 +42,11 @@ def is_prime(num):
             return False
         else:
             return True
+
+'''
+num = int(input('Num: '))
+print(is_prime(num))
+'''
 
 #需要说明的是，
 #如果我们导入的模块除了定义函数之外
