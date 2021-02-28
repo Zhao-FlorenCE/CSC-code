@@ -27,5 +27,5 @@ while True:
         break
     elif num == 1:
         print('There is no prime number smaller than 1.')
-    elif num == 0:
+    elif num <= 0:
         print('Please enter an positive integer.')
