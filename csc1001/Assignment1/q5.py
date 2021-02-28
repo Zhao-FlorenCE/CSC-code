@@ -1,12 +1,5 @@
 from math import sqrt
 
-def is_num(n):
-    try:
-        num = int(n)
-        return True
-    except:
-        return False
-
 def is_prime(num):
     prime = True
     for i in range(2, int(sqrt(num)) + 1):
@@ -16,11 +9,12 @@ def is_prime(num):
     if prime == True:
         return num
 
-num = input('Number: ')
-
-if is_num(num):
-    num = int(num)
-    
+while True:
+    try:
+        num = int(input('Number: '))
+    except:
+        print('Please enter an positive integer.')
+        continue
     if num >= 2:
         print('The prime numbers smaller than %d include:' % (num))
         j = 0
@@ -30,9 +24,8 @@ if is_num(num):
                 j += 1
                 if j % 8 == 0:
                     print()
+        break
     elif num == 1:
         print('There is no prime number smaller than 1.')
-    else:
-        print('Please enter a proper number.')
-else:
-    print('Please enter a integer.')
+    elif num == 0:
+        print('Please enter an positive integer.')
