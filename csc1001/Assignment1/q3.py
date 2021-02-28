@@ -7,4 +7,3 @@ while n ** 2 <= m:
     n += 1
 
 print('n =', n)
-        
