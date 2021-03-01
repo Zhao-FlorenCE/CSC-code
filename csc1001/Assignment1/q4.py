@@ -11,3 +11,4 @@ while True:
         print('m\tm + 1\tm ** (m + 1)')
         for i in range(row):
             print('%d\t%d\t%d' % (i + 1, i + 2, (i + 1) ** (i + 2)))
+        break
