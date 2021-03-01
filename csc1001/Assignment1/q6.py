@@ -16,12 +16,6 @@ def is_trigonometric():
         return False
     return function
 
-while True:
-    if is_trigonometric():
-        break
-    else:
-        continue
-
 def test_a():
     global a
     while True:
@@ -39,6 +33,12 @@ def test_b():
             break
         except:
             print('Please enter a number')
+            
+while True:
+    if is_trigonometric():
+        break
+    else:
+        continue
 
 while True:
     test_a()
