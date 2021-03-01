@@ -25,10 +25,10 @@ while True:
 while True:
     flag_a = False
     try:
-        a = int(input('Enter left end point a: '))
+        a = float(input('Enter left end point a: '))
         flag_a = True
     except:
-        print('Please enter a positive number')
+        print('Please enter a number')
         continue
     if flag_a:
         break
@@ -36,10 +36,10 @@ while True:
 while True:
     flag_b = False
     try:
-        b = int(input('Enter right end point b: '))
+        b = float(input('Enter right end point b: '))
         flag_b = True
     except:
-        print('Please enter a positive number')
+        print('Please enter a number')
         continue
     if flag_b:
         break
@@ -50,7 +50,7 @@ while True:
         n = int(input('Enter number n: '))
         flag_n = True
     except:
-        print('Please enter a positive number')
+        print('Please enter an integer')
         continue
     if flag_n:
         break
