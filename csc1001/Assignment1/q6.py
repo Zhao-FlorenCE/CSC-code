@@ -59,14 +59,10 @@ while True:
     else:
         print('Please enter a positive integer')
 
+list_function = ['sin', 'cos', 'tan']
 sum = 0
-if function == 1:
-    for i in range(n):
-        sum += (b - a) / n * sin(a + (b - a) / n * (i + 1 / 2))
-elif function == 2:
-    for i in range(n):
-         sum += (b - a) / n * cos(a + (b - a) / n * (i + 1 / 2))
-elif function == 3:
-    for i in range(n):
-        sum += (b - a) / n * tan(a + (b - a) / n * (i + 1 / 2))
+function = '(b - a) / n * ' + list_function[function - 1] + \
+           '(a + (b - a) / n * (i + 1 / 2))'
+for i in range(n):
+    sum += eval(function)
 print('The answer is:', sum)
