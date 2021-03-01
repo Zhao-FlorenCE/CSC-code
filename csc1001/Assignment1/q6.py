@@ -69,4 +69,4 @@ elif function == 2:
 elif function == 3:
     for i in range(n):
         sum += (b - a) / n * tan(a + (b - a) / n * (i + 1 / 2))
-print('The answer is:',sum)
+print('The answer is:', sum)
