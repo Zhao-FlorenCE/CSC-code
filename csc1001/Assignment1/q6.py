@@ -22,38 +22,42 @@ while True:
     else:
         continue
 
+def test_a():
+    global a
+    while True:
+        try:
+            a = float(input('Enter left end point a: '))
+            break
+        except:
+            print('Please enter a number')
+
+def test_b():
+    global b
+    while True:
+        try:
+            b = float(input('Enter right end point b: '))
+            break
+        except:
+            print('Please enter a number')
+
 while True:
-    flag_a = False
-    try:
-        a = float(input('Enter left end point a: '))
-        flag_a = True
-    except:
-        print('Please enter a number')
-        continue
-    if flag_a:
+    test_a()
+    test_b()
+    if a >= b:
+        print('Number a should be smaller than b')
+    else:
         break
 
 while True:
-    flag_b = False
-    try:
-        b = float(input('Enter right end point b: '))
-        flag_b = True
-    except:
-        print('Please enter a number')
-        continue
-    if flag_b:
-        break
-
-while True:
-    flag_n = False
     try:
         n = int(input('Enter number n: '))
-        flag_n = True
     except:
-        print('Please enter an integer')
+        print('Please enter a positive integer')
         continue
-    if flag_n:
+    if n > 0:
         break
+    else:
+        print('Please enter a positive integer')
 
 sum = 0
 if function == 1:
