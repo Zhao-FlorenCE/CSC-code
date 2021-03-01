@@ -18,7 +18,7 @@ while True:
     if num >= 2:
         print('The prime numbers smaller than %d include:' % (num))
         j = 0
-        for i in range(1, num):
+        for i in range(1, num -1):
             if is_prime(i + 1):
                 print(is_prime(i + 1), end = '\t')
                 j += 1
