@@ -5,16 +5,12 @@ from math import tan
 def is_trigonometric():
     global function
     function = input("Enter the function name: ")
-    if function == 'sin':
-        function = 1
-    elif function == 'cos':
-        function = 2
-    elif function == 'tan':
-        function = 3
+    if function == 'sin' or function == 'cos' or \
+       function == 'tan':
+        return function
     else:
         print('Not a valid trigonometric function')
         return False
-    return function
 
 def test_a():
     global a
@@ -59,9 +55,8 @@ while True:
     else:
         print('Please enter a positive integer')
 
-list_function = ['sin', 'cos', 'tan']
 sum = 0
-function = '(b - a) / n * ' + list_function[function - 1] + \
+function = '(b - a) / n * ' + function + \
            '(a + (b - a) / n * (i + 1 / 2))'
 for i in range(n):
     sum += eval(function)
