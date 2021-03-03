@@ -1,32 +1,45 @@
 import requests
 import json
+import datetime
 
 key1 = '?key=ff483156213750afe2229dc8f75bc9a4'
 key2 = '?key=ff483156213750afe2229dc8f75bc9a4&num=10'
 
 def main():
-    print('Daily News:')
+    time = str(datetime.date.today())
+    text = open(time + '.txt', 'w', encoding='utf-16')
+    #print('Daily News:')
+    text.write('Daily News:' + '\n')
     resp1 = requests.get('http://api.tianapi.com/bulletin/index' \
                          + key1)
     data_model1 = json.loads(resp1.text)
     i = 1
     for news in data_model1['newslist']:
-        print('%d.%s (%s)' % (i, news['title'], news['mtime']))
+        #print('%d.%s (%s)' % (i, news['title'], news['mtime']))
+        #print('  ', news['digest'])
+        text.write(str(i) + '.' + news['title'] + ' (' + \
+                   news['mtime'] + ')\n')
+        text.write('  ' + news['digest'] + '\n' + '\n')
         i += 1
-        print('  ', news['digest'])
-    print()
-    print('Scientific Sailing:')
+    #print()
+    #print('Scientific Sailing:')
+    text.write('\n' + 'Scientific Sailing:' + '\n')
     resp2 = requests.get('http://api.tianapi.com/sicprobe/index' \
                          + key2)
     data_model2 = json.loads(resp2.text)
     j = 1
     for news in data_model2['newslist']:
-        print('%d.%s (%s)' % (i, news['title'], news['ctime']))
+        #print('%d.%s (%s)' % (j, news['title'], news['ctime']))
+        #print('  ', news['description'])
+        #print('(source: %s, url: %s)' % \
+        #     (news['source'], news['url']))
+        text.write(str(j) + '.' + news['title'] + ' (' + \
+                   news['ctime'] + ')\n')
+        text.write('  ' + news['description'] + '\n')
+        text.write('Source: ' + news['source'] + '\n')
+        text.write('Url: ' + news['url'] + '\n' + '\n')
         j += 1
-        print('  ', news['description'])
-        print('(source: %s, url: %s)' % \
-             (news['source'], news['url']))
-
+    text.close()
 
 if __name__ == '__main__':
     main()
