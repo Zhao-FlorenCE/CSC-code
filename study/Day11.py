@@ -7,7 +7,8 @@ key2 = '?key=ff483156213750afe2229dc8f75bc9a4&num=10'
 
 def main():
     time = str(datetime.date.today())
-    text = open(time + '.txt', 'w', encoding='utf-16')
+    text = open('C:/Users/FlorenCE/Desktop/News py/' \
+                + time + '.txt', 'w', encoding='utf-8')
     #print('Daily News:')
     text.write('Daily News:' + '\n')
     resp1 = requests.get('http://api.tianapi.com/bulletin/index' \
