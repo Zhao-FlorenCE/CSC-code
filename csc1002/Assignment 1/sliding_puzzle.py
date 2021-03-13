@@ -44,7 +44,7 @@ def game_info():
     print('|                                                                 |');time.sleep(0.008)
     print('|                                                                 |');time.sleep(0.008)
     print('===================================================================');time.sleep(0.008)
-    print('\n')
+    print('')
 
 def game_process():
 
@@ -72,7 +72,7 @@ def game_process():
     print('|                                                                 |')
     print('|                                                                 |')
     print('===================================================================')
-    print('\n')
+    print('')
 
 def game_end():
 
@@ -93,7 +93,7 @@ def game_end():
     print('|                                                                 |');time.sleep(0.008)
     print('|                                                                 |');time.sleep(0.008)
     print('===================================================================');time.sleep(0.008)
-    print('\n')
+    print('')
     print('You have totally performed %d moves.\n' % moves)
     print('Do you want to play again?\n\nEnter \'y\' to restart and \'n\' to quit.\n >', end = ' ')
     while True:
@@ -155,9 +155,9 @@ def game_self():
     map_size = size ** 2
 
     map = random.sample(range(map_size), map_size)
-    map_test(map)
+    map_test()
 
-def map_test(a):
+def map_test():
 
     global zero_position, moves, is_game_start
 
@@ -165,11 +165,11 @@ def map_test(a):
     is_game_start = False
     inversion_num = 0
 
-    for i in range(len(a)):
-        if a[i] == 0:
+    for i in range(len(map)):
+        if map[i] == 0:
             zero_position = i
-        for j in range(len(a) - i):
-            if a[len(a) - 1 - i] < a[j] and a[len(a) - 1 - i] * a[j] != 0:
+        for j in range(len(map) - i):
+            if map[len(map) - 1 - i] < map[j] and map[len(map) - 1 - i] * map[j] != 0:
                 inversion_num += 1
     if size % 2 != 0:
         if inversion_num % 2 == 0:
@@ -178,12 +178,12 @@ def map_test(a):
             is_game_start = False
     else:
         if inversion_num % 2 == 0:
-            if (size - zero_position) % 2 == 0:
+            if (size - (zero_position // size + 1)) % 2 == 0:
                 is_game_start = True
             else:
                 is_game_start = False
         else:
-            if (size - zero_position) % 2 != 0:
+            if (size - (zero_position // size + 1)) % 2 != 0:
                 is_game_start = True
             else:
                 is_game_start = False
