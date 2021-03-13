@@ -2,7 +2,7 @@ import os
 import time
 import random
 
-def start_menu():
+def game_menu():
 
     os.system('cls')
     print('===================================================================');time.sleep(0.008)
@@ -23,7 +23,6 @@ def start_menu():
     print('|                                                                 |');time.sleep(0.008)
     print('===================================================================');time.sleep(0.008)
     input()
-    game_info()
 
 def game_info():
 
@@ -46,33 +45,75 @@ def game_info():
     print('|                                                                 |');time.sleep(0.008)
     print('===================================================================');time.sleep(0.008)
     print('\n')
-    input_size()
 
-def game_info_in_game():
+def game_process():
+
+    global moves
 
     os.system('cls')
+    moves_print = 'You have performed ' + str(moves) +' move'
+    if moves > 1:
+        moves_print += 's'
+    moves_print += '.'
     print('===================================================================')
     print('|                                                                 |')
     print('|                                                                 |')
-    print('|         _____                        _____        __            |')
-    print('|        / ____|                      |_   _|      / _|           |')
-    print('|       | |  __  __ _ _ __ ___   ___    | |  _ __ | |_ ___        |')
-    print('|       | | |_ |/ _` | `_ ` _ \ / _ \   | | | `_ \|  _/ _ \       |')
-    print('|       | |__| | (_| | | | | | |  __/  _| |_| | | | || (_) |      |')
-    print('|        \_____|\__,_|_| |_| |_|\___| |_____|_| |_|_| \___/       |')
     print('|                                                                 |')
+    print('|           _______                  _ _ _                        |')
+    print('|          |__   __|                | | |_|                       |')
+    print('|             | |_ __ __ ___   _____| | |_ _ __   __ _            |')
+    print('|             | | `__/ _` \ \ / / _ \ | | | `_ \ / _` |           |')
+    print('|             | | | | (_| |\ V /  __/ | | | | | | (_| |           |')
+    print('|             |_|_|  \__,_| \_/ \___|_|_|_|_| |_|\__, |           |')
+    print('|                                                 __/ |           |')
+    print('|                                                |___/            |')
     print('|                                                                 |')
-    print('|                                                                 |')
-    print('|          This is a game to rearrange the lost numbers.          |')
-    print('|           Use your keyboard to help find their homes.           |')
+    print('|'                   ,moves_print.center(63),                    '|')
     print('|                                                                 |')
     print('|                                                                 |')
     print('===================================================================')
     print('\n')
 
-def input_size():
+def game_end():
+
+    os.system('cls')
+    print('===================================================================');time.sleep(0.008)
+    print('|                                                                 |');time.sleep(0.008)
+    print('|                                                                 |');time.sleep(0.008)
+    print('|        _______ _                 _     __     __                |');time.sleep(0.008)
+    print('|       |__   __| |               | |    \ \   / /                |');time.sleep(0.008)
+    print('|          | |  | |__   __ _ _ __ | | __  \ \_/ /__  _   _        |');time.sleep(0.008)
+    print('|          | |  | `_ \ / _` | `_ \| |/ /   \   / _ \| | | |       |');time.sleep(0.008)
+    print('|          | |  | | | | (_| | | | |   <     | | (_) | |_| |       |');time.sleep(0.008)
+    print('|          |_|  |_| |_|\__,_|_| |_|_|\_\    |_|\___/ \__,_|       |');time.sleep(0.008)
+    print('|                                                                 |');time.sleep(0.008)
+    print('|                                                                 |');time.sleep(0.008)
+    print('|                        Congratulations!                         |');time.sleep(0.008)
+    print('|             You helped the numbers find their homes!            |');time.sleep(0.008)
+    print('|                                                                 |');time.sleep(0.008)
+    print('|                                                                 |');time.sleep(0.008)
+    print('===================================================================');time.sleep(0.008)
+    print('\n')
+    print('You have totally performed %d moves.\n' % moves)
+    print('Do you want to play again?\n\nEnter \'y\' to restart and \'n\' to quit.\n >', end = ' ')
+    while True:
+        answer = input()
+        if answer == 'y':
+            is_game_restart = True
+            break
+        elif answer == 'n':
+            is_game_restart = False
+            break
+        else:
+            print('\nPlease enter \'y\' or \'n\'.\n >', end = ' ')
+            continue
+
+    return is_game_restart
+
+def map_size():
 
     global size
+
     while True:
         size = input('Please enter the map size (larger than two and smaller than eleven) > ')
         try:
@@ -80,17 +121,18 @@ def input_size():
             if (3 <= size <= 10):
                 break
             else:
-                print('Please enter a number larger than two and smaller than eleven.')
+                print('Please enter a number larger than two and smaller than eleven.\n')
                 continue
         except:
-            print('Please enter a integer.')
+            print('Please enter a integer.\n')
             continue
-    bind_keys()
 
 def bind_keys():
 
     global keys_left, keys_right, keys_up, keys_down
+
     while True:
+        print()
         keys = input('Please enter four different space-separated letters \nfor left, right, up and down moves > ')
         keys_no_space = keys.replace(' ', '')
         if len(keys_no_space) != 4 or len(keys.split()) != len(set(keys.split())):
@@ -106,81 +148,85 @@ def bind_keys():
                 break
             except:
                 continue
-    game_self()
 
 def game_self():
 
     global map
     map_size = size ** 2
+
     map = random.sample(range(map_size), map_size)
     map_test(map)
-    #print(map)
 
 def map_test(a):
 
-    global inversion_num, zero_position, zero_position_y, zero_position_x
+    global zero_position, moves, is_game_start
+
+    moves = -1
     is_game_start = False
     inversion_num = 0
+
     for i in range(len(a)):
         if a[i] == 0:
             zero_position = i
         for j in range(len(a) - i):
             if a[len(a) - 1 - i] < a[j] and a[len(a) - 1 - i] * a[j] != 0:
                 inversion_num += 1
-    #print(inversion_num)
-    #print(zero_position)
-    #print(zero_position_y)
-    if size % 2 != 0: #size is odd
-        if inversion_num % 2 == 0: #inversion number is even
+    if size % 2 != 0:
+        if inversion_num % 2 == 0:
             is_game_start = True
-        else:   #inversion number is odd
+        else:
             is_game_start = False
-    else: #size is even
-        if inversion_num % 2 == 0: #inversion number is even
-            if (size - zero_position) % 2 == 0: #the line difference is even
-                is_game_start = True
-            else: #the line difference is odd
-                is_game_start = False
-        else: #inversion number is odd
-            if (size - zero_position) % 2 != 0: #the line difference is odd
-                is_game_start = True
-            else: #the line difference is even
-                is_game_start = False
-    if is_game_start:
-        game_start()
     else:
-        game_self()
+        if inversion_num % 2 == 0:
+            if (size - zero_position) % 2 == 0:
+                is_game_start = True
+            else:
+                is_game_start = False
+        else:
+            if (size - zero_position) % 2 != 0:
+                is_game_start = True
+            else:
+                is_game_start = False
 
 def game_start():
 
+
+    global zero_position, moves, is_game_end
+
     os.system('cls')
-    game_info_in_game()
-    global zero_position
+
+    is_game_end = True
+    moves += 1
     test_map = [0] * len(map)
+    game_process()
+
     for i in range(len(map) - 1):
         test_map[i] = i + 1
-    if test_map == map:
-        game_end()
-    else:
+    if test_map != map:
         for i in range(len(map)):
             if map[i] == 0:
                 zero_position = i
-                print(' ' ,end = ' ')
+                print('  ' ,end = ' ')
             else:
-                print(map[i], end = ' ')
+                print('%2d' % map[i], end = ' ')
             if (i + 1) % size == 0:
                 print()
-        pre_move()
+        print()
+        is_game_end = False
+    return is_game_end
 
-def pre_move():
+def map_move():
 
-    global moveable, is_keys_left, is_keys_right, is_keys_up, is_keys_down
-    is_keys_left = is_keys_right = is_keys_up = is_keys_down = False
+    global is_game_end, is_move
+
+    is_keys_left = is_keys_right = is_keys_up = is_keys_down = is_game_end = False
+    is_move = True
     zero_position_y = zero_position // size + 1
     zero_position_x = zero_position + 1 - (zero_position_y - 1) * size
     moveable = [1] * (size + 1)
     moveable[1] = 0
     moveable[size] = 2
+
     print('Please enter your move', end = ' ')
     if moveable[zero_position_x] == 0:
         print('(left - %s,' % keys_left, end = ' ')
@@ -200,49 +246,47 @@ def pre_move():
     elif moveable[zero_position_y] == 2:
         print('down - %s) >' % keys_down, end = ' ')
         is_keys_down = True
-    move()
 
-def move():
-    
     move_to = input()
     if move_to == keys_left and is_keys_left:
         map[zero_position] = map[zero_position + 1]
         map[zero_position + 1] = 0
-        game_start()
     elif move_to == keys_right and is_keys_right:
         map[zero_position] = map[zero_position - 1]
         map[zero_position - 1] = 0
-        game_start()
     elif move_to == keys_up and is_keys_up:
         map[zero_position] = map[zero_position + size]
         map[zero_position + size] = 0
-        game_start()
     elif move_to == keys_down and is_keys_down:
         map[zero_position] = map[zero_position - size]
         map[zero_position - size] = 0
-        game_start()
     else:
-        pre_move()
+        is_move = False
+        print('Sorry, you cannot move in that way.\n')
 
-def game_end():
-                                       
-    os.system('cls')
-    print('===================================================================');time.sleep(0.008)
-    print('|                                                                 |');time.sleep(0.008)
-    print('|                                                                 |');time.sleep(0.008)
-    print('|        _______ _                 _     __     __                |');time.sleep(0.008)
-    print('|       |__   __| |               | |    \ \   / /                |');time.sleep(0.008)
-    print('|          | |  | |__   __ _ _ __ | | __  \ \_/ /__  _   _        |');time.sleep(0.008)
-    print('|          | |  | `_ \ / _` | `_ \| |/ /   \   / _ \| | | |       |');time.sleep(0.008)
-    print('|          | |  | | | | (_| | | | |   <     | | (_) | |_| |       |');time.sleep(0.008)
-    print('|          |_|  |_| |_|\__,_|_| |_|_|\_\    |_|\___/ \__,_|       |');time.sleep(0.008)
-    print('|                                                                 |');time.sleep(0.008)
-    print('|                                                                 |');time.sleep(0.008)
-    print('|                        Congratulations!                         |');time.sleep(0.008)
-    print('|             You helped the numbers find their homes!            |');time.sleep(0.008)
-    print('|                                                                 |');time.sleep(0.008)
-    print('|                                                                 |');time.sleep(0.008)
-    print('===================================================================');time.sleep(0.008)
-    print('\n')
+def main():
+    
+    while True:
+        game_menu()
+        game_info()
+        map_size()
+        bind_keys()
+        game_self()
 
-start_menu()
+        while not is_game_start:
+            game_self()
+
+        game_start()
+        map_move()
+
+        while not is_game_end:
+            if is_move and game_start():
+                break
+            else:
+                map_move()
+
+        if not game_end():
+            break
+
+if __name__ == '__main__':
+    main()
