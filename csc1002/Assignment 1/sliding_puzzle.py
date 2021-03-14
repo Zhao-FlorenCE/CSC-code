@@ -177,16 +177,10 @@ def map_test():
         else:
             is_game_start = False
     else:
-        if inversion_num % 2 == 0:
-            if (size - (zero_position // size + 1)) % 2 == 0:
-                is_game_start = True
-            else:
-                is_game_start = False
+        if (inversion_num + (size - (zero_position // size + 1))) % 2 == 0:
+            is_game_start = True
         else:
-            if (size - (zero_position // size + 1)) % 2 != 0:
-                is_game_start = True
-            else:
-                is_game_start = False
+            is_game_start = False
 
 def game_start():
 
@@ -264,8 +258,8 @@ def map_move():
         is_move = False
         print('Sorry, you cannot move in that way.\n')
 
-def main():
-    
+if __name__ == '__main__':
+
     while True:
         game_menu()
         game_info()
@@ -287,6 +281,3 @@ def main():
 
         if not game_end():
             break
-
-if __name__ == '__main__':
-    main()
