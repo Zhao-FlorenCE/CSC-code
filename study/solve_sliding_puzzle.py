@@ -100,7 +100,7 @@ if __name__ == '__main__':
                 game_self()
 
             t0 = time.time()
-            print('>', map)
+            print('>', map, time.strftime('%H:%M:%S',time.localtime(time.time())))
             print('>', Solution().solve(map))
             print('>', time.time() - t0, '\n')
             tot_time += time.time() - t0

@@ -127,7 +127,7 @@ def map_size():
             print('Please enter a integer.\n')
             continue
 
-def bind_keys():
+def map_keys():
 
     global keys_left, keys_right, keys_up, keys_down
 
@@ -149,22 +149,19 @@ def bind_keys():
             except:
                 continue
 
-def game_self():
+def map_self():
 
-    global map
+    global map, test_map, zero_position, moves, is_game_start
     map_size = size ** 2
 
     map = random.sample(range(map_size), map_size)
-    map_test()
-
-def map_test():
-
-    global zero_position, moves, is_game_start
-
+    test_map = [0] * len(map)
     moves = -1
     is_game_start = False
     inversion_num = 0
 
+    for i in range(len(map) - 1):
+        test_map[i] = i + 1
     for i in range(len(map)):
         if map[i] == 0:
             zero_position = i
@@ -182,8 +179,7 @@ def map_test():
         else:
             is_game_start = False
 
-def game_start():
-
+def map_start():
 
     global zero_position, moves, is_game_end
 
@@ -191,11 +187,8 @@ def game_start():
 
     is_game_end = True
     moves += 1
-    test_map = [0] * len(map)
     game_process()
 
-    for i in range(len(map) - 1):
-        test_map[i] = i + 1
     if test_map != map:
         for i in range(len(map)):
             if map[i] == 0:
@@ -264,17 +257,17 @@ if __name__ == '__main__':
         game_menu()
         game_info()
         map_size()
-        bind_keys()
-        game_self()
+        map_keys()
+        map_self()
 
-        while not is_game_start:
-            game_self()
+        while not is_game_start or test_map == map:
+            map_self()
 
-        game_start()
+        map_start()
         map_move()
 
         while not is_game_end:
-            if is_move and game_start():
+            if is_move and map_start():
                 break
             else:
                 map_move()
