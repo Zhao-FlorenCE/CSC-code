@@ -179,7 +179,7 @@ def map_self(): # pre-build a map and verify validity
         else:
             is_game_start = False
 
-def map_start():
+def map_start(): # build, start the map and test whether the game ends
 
     global zero_position, moves, is_game_end
 

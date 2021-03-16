@@ -92,13 +92,12 @@ if __name__ == '__main__':
         n = tot_time = 0
         size = int(input())
         print()
-        while n < 10:
+        while n < 100:
 
             game_self()
 
             while not is_game_start:
                 game_self()
-
             t0 = time.time()
             print('>', map, time.strftime('%H:%M:%S',time.localtime(time.time())))
             print('>', Solution().solve(map))
