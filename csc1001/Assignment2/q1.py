@@ -1,5 +1,4 @@
-import random
-
+# Calculate the sqrt by the formula
 def sqrt(last_guess, n):
 
     next_guess = (last_guess + (n / last_guess)) / 2
@@ -8,9 +7,11 @@ def sqrt(last_guess, n):
     else:
         return 0, next_guess
 
-n = int(input('Please enter a positive number: '))
-last_guess = random.uniform(0.0001, n)
+n = float(input('Please enter a positive number: '))
+# Set the value of last guess is n
+last_guess = n
 while True:
+    # Use the return_value tumple to decide whether the sqrt functoin ends
     return_value = sqrt(last_guess, n)
     if return_value[0]:
         print('The approximate square root is:', return_value[1])

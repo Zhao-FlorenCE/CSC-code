@@ -1,5 +1,6 @@
 import math
 
+# Judge whether the number is a prime
 def is_prime(n):
 
     for i in range(2, int(math.sqrt(n) + 1)):
@@ -7,6 +8,7 @@ def is_prime(n):
             return False
     return True
 
+# Judge whether the number is a palindrome using typr str()
 def is_palindrome(n):
 
     n = str(n)
@@ -15,11 +17,13 @@ def is_palindrome(n):
         return True
     return False
 
+# Judge whether the palidrome is a prime
 def is_reverse_prime(n):
 
     n_reversed = str(n)[::-1]
     return (is_prime(int(n_reversed)))
 
+# Knowning that the smallest emirp is 13
 n = 13
 i = 0
 while i < 100:

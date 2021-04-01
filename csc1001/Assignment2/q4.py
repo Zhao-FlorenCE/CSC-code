@@ -1,3 +1,4 @@
+# Check whether the string pair is an anagram
 def is_anagram(s1, s2):
     s1.sort()
     s2.sort()
