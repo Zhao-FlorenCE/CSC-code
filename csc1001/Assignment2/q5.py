@@ -1,13 +1,20 @@
 lock = [0] * 100
 i = 1
 while i <= 100:
-    j = 0
+    j = i - 1
     while j < 100:
         lock[j] = not lock[j]
         j += i
     i += 1
 ans = 0
+answer = str()
 for i in range(100):
     if lock[i]:
         ans += 1
-print(ans)
+        lock[i] = 'L' + str(i + 1) + ': open'
+        answer += str(i + 1) + ' '
+    else:
+        lock[i] = 'L' + str(i + 1) + ': locked'
+print('%d lockers are open.' % ans)
+print('The number of the open lockers are:\n', answer.split(), sep = '')
+print('This is the detailed information:\n', lock, sep = '')
