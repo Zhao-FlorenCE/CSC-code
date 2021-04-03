@@ -16,16 +16,16 @@ def get_digit(n):
 def double_place_sum(n):
 
     double_sum = 0
-    for i in range(1, len(n), 2):
-            double_sum += int(n[i])
+    for i in range(len(n) - 2, -1, -2):
+        double_sum += (2 * int(n[i])) % 10 + (2 * int(n[i])) // 10
     return double_sum
 
 # Calculate the sum of odd place numbers
 def odd_place_sum(n):
     
     odd_sum = 0
-    for i in range(0, len(n), 2):
-        odd_sum += (2 * int(n[i])) % 10 + (2 * int(n[i])) // 10
+    for i in range(len(n) - 1, -1, -2):
+        odd_sum += int(n[i])
     return odd_sum
 
 # Check if the card number is valid
