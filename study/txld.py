@@ -1,6 +1,7 @@
 import requests
 import json
 import warnings
+import re
 
 warnings.filterwarnings('ignore')
 
@@ -58,7 +59,7 @@ for key,value in store.items():
     print(key)
     #text.write(key + '\n')
     for meals in meal_list['data']['list'][0]['list']:
-        print(meals['goodsTitle'])
+        print(''.join(re.findall('[\u4e00-\u9fa5]',meals['goodsTitle'])))
         #text.write(meals['goodsTitle'] + '\n')
     print()
     #text.write('\n')
