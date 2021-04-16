@@ -7,7 +7,7 @@ class Polynomial(object):
     
     def reset_original(self):
         self.original = input('Please enter the original polynomial\n> ').replace(' ', '').replace('-', '+-')
-        character = {'*' : 1, '^' : 1, '+' : 1, '-' : 1}
+        character = {'*' : 1, '^' : 1, '+' : 1, '-' : 1, '.' : 1}
         for i in range(len(self.original)):
             if not character.get(self.original[i], 0) and not self.original[i].isdigit():
                 self.variable = self.original[i]
