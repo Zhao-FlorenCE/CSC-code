@@ -44,7 +44,7 @@ class Ecosystem(object):
                     else:
                         temp_move = self.move[random.randint(0, 5)]
                     if self.river[i + temp_move] == self.river[i]:
-                        if temp_move == 0 or len(set(self.river)) == 2:
+                        if temp_move == 0:
                             continue
                         else:
                             while True:
