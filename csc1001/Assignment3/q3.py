@@ -28,7 +28,7 @@ class Ecosystem(object):
         temp_move = 0
         for _ in range(self.step):
             print('step', _ + 1, ''.join(self.river[__] for __ in range(len(self.river))))
-            if len(set(self.river)) < 2 or (len(set(self.river)) == 2 and sorted(self.river)[len(self.river) - 1] == 'N'):
+            if len(set(self.river)) <= 2:
                 break
             for i in range(len(self.river)):
                 if temp_move == 1:
@@ -43,8 +43,6 @@ class Ecosystem(object):
                         temp_move = -abs(self.move[random.randint(0, 5)])
                     else:
                         temp_move = self.move[random.randint(0, 5)]
-                    print(i, self.river[i], temp_move)
-                    print(self.river)
                     if self.river[i + temp_move] == self.river[i]:
                         if temp_move == 0 or len(set(self.river)) == 2:
                             continue
