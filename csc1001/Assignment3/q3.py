@@ -31,6 +31,8 @@ class Ecosystem(object):
             if len(set(self.river)) <= 2:
                 break
             for i in range(len(self.river)):
+                if len(set(self.river)) <= 2:
+                    break
                 if temp_move == 1:
                     temp_move = 0
                     continue
