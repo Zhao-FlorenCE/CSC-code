@@ -21,6 +21,10 @@ class Polynomial(object):
         self.derivative = self.derivative.replace('*' + self.variable + '^0', '').replace('+-', '-').replace('1*', '').replace('^1', '')
 
     def print(self):
+        if not self.derivative:
+            self.derivative = '00'
         print('The derivative of the polynomial is\n>', self.derivative[:-1])
 
 polynomial = Polynomial()
+polynomial.reset_original()
+polynomial.print()

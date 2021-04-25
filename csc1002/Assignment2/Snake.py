@@ -27,7 +27,7 @@ def set_text():
                 align = 'center', font = ('Arial', 20, 'bold'))
 
 # Create turtle object
-def set_turtle(show = False, color = 'balck', pos = (0, 0)):
+def set_turtle(show = False, color = 'black', pos = (0, 0)):
 
     turtle = Turtle(shape = 'square')
     turtle.color(color)
@@ -110,7 +110,7 @@ def snake_move():
                 
         if (-250 >= (x - 25) and head.heading() == 180) or \
            ((x + 25) >= 250 and head.heading() == 0) or \
-           (-250 >= (y -25)) and head.heading() == 270) or \
+           (-250 >= (y -25) and head.heading() == 270) or \
            ((y + 25) >= 250 and head.heading() == 90):
             head.hideturtle()
         

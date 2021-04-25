@@ -33,3 +33,9 @@ class Flower(object):
         print('Flower price:', self.price)
 
 flower = Flower()
+flower.set_name()
+flower.set_number()
+flower.set_price()
+flower.get_name()
+flower.get_number()
+flower.get_price()

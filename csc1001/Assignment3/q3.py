@@ -63,3 +63,5 @@ class Ecosystem(object):
                         self.river[i] = 'N'
 
 ecosystem = Ecosystem()
+ecosystem.set_river()
+ecosystem.simulation()
